@@ -2,7 +2,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 def load_model_and_tokenizer(model_name: str, device: str) -> tuple[AutoModelForCausalLM, AutoTokenizer]:
     """
-    Loads the supervised fine-tuned language model and tokenizer from huggingface.
+    Loads the supervised fine-tuned language model (sft) and tokenizer from huggingface.
 
     Args:
         model_name: The name or path of the sft model.
@@ -19,7 +19,7 @@ def load_model_and_tokenizer(model_name: str, device: str) -> tuple[AutoModelFor
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
     
-    # Load the pre-trained language model
+    # Load the language model
     model = AutoModelForCausalLM.from_pretrained(model_name)
     
     # Move the model to the specified device
