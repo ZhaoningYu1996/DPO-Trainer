@@ -12,6 +12,23 @@ To install the required environment, please use the following command:
 conda env create -f environment.yml
 ```
 
+## Description of each file
+
+alpaca_template.py: An alpaca template file directly from torchtune 2.4.1.
+
+clean_dataset.py: Given the raw dataset with five attributes, the function in the file generate a list of tuples (prompt, chosen, rejected), then split it into training set and testing set.
+
+dataset.py: A PreferenceDataset class for loading preference pairs.
+
+model.py: To load model and tokenizer.
+
+loss.py: DPO loss function.
+
+dpo_trainer.py: main function to train a DPO process.
+
+
+## Train the model using DPO
+
 To train the model using the DPO loss function, run:
 
 ```bash
