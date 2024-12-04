@@ -1,7 +1,6 @@
 import torch
 import argparse
 from torch.utils.data import DataLoader
-from transformers import AdamW
 from model import load_model_and_tokenizer
 from dataset import PreferenceDataset
 from loss import dpo_loss
@@ -18,10 +17,10 @@ def main():
     parser = argparse.ArgumentParser(description='Train a language model using Direct Preference Optimization.')
     parser.add_argument('--model_name', type=str, default='gpt2', help='The name of the pre-trained language model.')
     parser.add_argument('--learning_rate', type=float, default=5e-5, help='The learning rate for the optimizer.')
-    parser.add_argument('--num_epochs', type=int, default=10, help='The number of training epochs.')
+    parser.add_argument('--num_epochs', type=int, default=6, help='The number of training epochs.')
     parser.add_argument('--beta', type=float, default=0.1, help='The hyperparameter beta for DPO.')
-    parser.add_argument('--batch_size', type=int, default=4, help='The batch size for training.')
-    parser.add_argument('--train_split', type=float, default=0.6, help='The fraction of data to use for training.')
+    parser.add_argument('--batch_size', type=int, default=5, help='The batch size for training.')
+    parser.add_argument('--train_split', type=float, default=0.9, help='The fraction of data to use for training.')
     parser.add_argument('--max_length', type=int, default=512, help='The maximum sequence length for tokenization.')
     parser.add_argument('--data_path', type=str, default='data/instruction-data-with-preference.json', help='The path to the raw preference data.')
     parser.add_argument('--train_data_path', type=str, default='data/train_data.json', help='The path to save the cleaned training data.')
