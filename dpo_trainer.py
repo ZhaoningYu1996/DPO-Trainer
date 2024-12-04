@@ -48,7 +48,7 @@ def main():
         param.requires_grad = False
 
     # Optimizer configuration
-    optimizer = AdamW(model.parameters(), lr=args.learning_rate)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate)
 
     # Load the raw preference data
     train_data, test_data = clean_raw_data(args.data_path, args.train_data_path, args.test_data_path, args.train_split)
