@@ -11,8 +11,8 @@ def dpo_loss(model: nn.Module, reference_model: nn.Module, inputs: dict, beta: f
         reference_model: The reference policy model.
         inputs: A batch of inputs from the DataLoader, containing:
             - 'instruction_ids': Tensor of input token IDs.
-            - 'chosen_ids': Tensor of preferred output token IDs.
-            - 'rejected_ids': Tensor of less preferred output token IDs.
+            - 'chosen_ids': Tensor of chosen output token IDs.
+            - 'rejected_ids': Tensor of rejected output token IDs.
         beta: The temperature controlling strength of KL penalty.
         device: The device to perform computations on.
 
