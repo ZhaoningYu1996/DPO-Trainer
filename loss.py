@@ -7,13 +7,13 @@ def dpo_loss(model: nn.Module, reference_model: nn.Module, inputs: dict, beta: f
     Computes the Direct Preference Optimization loss for a batch of inputs
 
     Args:
-        model: The current policy model (fine-tuned model).
-        reference_model: The reference policy model (pre-trained model).
+        model: The current policy model.
+        reference_model: The reference policy model.
         inputs: A batch of inputs from the DataLoader, containing:
             - 'instruction_ids': Tensor of input token IDs.
             - 'chosen_ids': Tensor of preferred output token IDs.
             - 'rejected_ids': Tensor of less preferred output token IDs.
-        beta: The hyperparameter.
+        beta: The temperature controlling strength of KL penalty.
         device: The device to perform computations on.
 
     Returns:
