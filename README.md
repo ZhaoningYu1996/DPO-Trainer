@@ -14,7 +14,7 @@ conda env create -f environment.yml
 
 ## Description of each file
 
-alpaca_template.py: An alpaca template file directly from torchtune 2.4.1.
+alpaca_template.py: An alpaca template file directly from torchtune 0.2.1.
 
 clean_dataset.py: For preprocessing and spliting the dataset.
 
