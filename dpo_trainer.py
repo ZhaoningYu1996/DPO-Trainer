@@ -21,6 +21,7 @@ def main():
     parser.add_argument('--num_epochs', type=int, default=10, help='The number of training epochs.')
     parser.add_argument('--beta', type=float, default=0.1, help='The hyperparameter beta for DPO.')
     parser.add_argument('--batch_size', type=int, default=4, help='The batch size for training.')
+    parser.add_argument('--train_split', type=float, default=0.6, help='The fraction of data to use for training.')
     parser.add_argument('--max_length', type=int, default=512, help='The maximum sequence length for tokenization.')
     parser.add_argument('--data_path', type=str, default='data/instruction-data-with-preference.json', help='The path to the raw preference data.')
     parser.add_argument('--train_data_path', type=str, default='data/train_data.json', help='The path to save the cleaned training data.')
@@ -36,6 +37,8 @@ def main():
     # Model configuration
     MODEL_NAME = args.model_name
     model, tokenizer = load_model_and_tokenizer(MODEL_NAME, device)
+
+    # Create a reference model for DPO
     ref_model = deepcopy(model)
     ref_model.to(device)
     ref_model.eval()
@@ -48,7 +51,7 @@ def main():
     optimizer = AdamW(model.parameters(), lr=args.learning_rate)
 
     # Load the raw preference data
-    train_data, test_data = clean_raw_data(args.data_path, args.train_data_path, args.test_data_path)
+    train_data, test_data = clean_raw_data(args.data_path, args.train_data_path, args.test_data_path, args.train_split)
     print(f"Loaded {len(train_data)} preference pairs.")
     print("Example:")
     print(train_data[0])
