@@ -107,7 +107,7 @@ def main():
     tokenizer.save_pretrained(args.output_dir)
     print(f"\nModel saved to {args.output_dir}")
 
-    # Plot the training and validation loss
+    # Plot the training and testing loss
     epochs = range(1, args.num_epochs + 1)
     plt.figure(figsize=(8, 6))
     plt.plot(epochs, train_losses, 'b-', label='Training Loss')
