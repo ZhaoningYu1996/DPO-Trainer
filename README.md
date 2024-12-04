@@ -16,15 +16,15 @@ conda env create -f environment.yml
 
 alpaca_template.py: An alpaca template file directly from torchtune 2.4.1.
 
-clean_dataset.py: Given the raw dataset with five attributes, the function in the file generate a list of tuples (prompt, chosen, rejected), then split it into training set and testing set.
+clean_dataset.py: For preprocessing and spliting the dataset.
 
-dataset.py: A PreferenceDataset class for loading preference pairs.
+dataset.py: For loading preference pairs.
 
-model.py: To load model and tokenizer.
+model.py: For loading model and tokenizer.
 
-loss.py: DPO loss function.
+loss.py: For calculating DPO loss.
 
-dpo_trainer.py: main function to train a DPO process.
+dpo_trainer.py: For training a DPO process.
 
 
 ## Train the model using DPO
